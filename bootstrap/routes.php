@@ -8,7 +8,7 @@ use Nen\Router\Route;
 use Nen\Router\Routes;
 
 return new Routes([
-    new Route(IndexController::class, null, null, Request::METHOD_GET),
+    new Route(IndexController::class, '', null, Request::METHOD_GET),
     new Group('api/1.0', new Routes([
         new Group('game', new Routes([
             new Route(GameController::class, 'event', null, Request::METHOD_POST),
