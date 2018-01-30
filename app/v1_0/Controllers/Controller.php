@@ -42,7 +42,7 @@ abstract class Controller extends NenController
             'Content-Type', 'application/json; charset=utf-8'
         );
 
-        $logDirectory = __DIR__ . '/../../log/';
+        $logDirectory = __DIR__ . '/../../../log/';
         $this->logger = new Logger($logDirectory);
 
 //        $this->connection = new Connection(
