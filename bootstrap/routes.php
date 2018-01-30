@@ -12,9 +12,9 @@ return new Routes([
     new Route(IndexController::class, 'home', null, Request::METHOD_GET),
     new Group('api/1.0', new Routes([
         new Group('game', new Routes([
-            new Route(GameController::class, 'get', null, Request::METHOD_GET),
-            new Route(GameController::class, 'post', null, Request::METHOD_POST),
-            new Route(GameController::class, 'put', null, Request::METHOD_PUT),
+            new Route(GameController::class, 'event', null, Request::METHOD_GET),
+            new Route(GameController::class, 'event', null, Request::METHOD_POST),
+            new Route(GameController::class, 'event', null, Request::METHOD_PUT),
         ])),
         new Group('log', new Routes([
             new Route(LogController::class, 'load', '(get|post|put)', Request::METHOD_GET),
