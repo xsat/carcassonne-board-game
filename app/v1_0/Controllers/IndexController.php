@@ -9,6 +9,6 @@ class IndexController extends Controller
 {
     public function homeAction(): void
     {
-        $this->response(['success' => true]);
+        $this->response(['message' => 'Hello world.']);
     }
 }
