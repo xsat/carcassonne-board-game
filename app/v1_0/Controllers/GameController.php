@@ -9,6 +9,12 @@ class GameController extends Controller
 {
     public function eventAction(): void
     {
-        $this->response(['success' => true]);
+        if ($this->request->get('hub_mode') == 'subscribe' &&
+            $this->request->get('hub_verify_token') == getenv('VERIFY_TOKEN')
+        ) {
+            $this->response->setContent($this->request->get('hub_challenge'));
+        } else {
+            $this->response(['success' => true]);
+        }
     }
 }
