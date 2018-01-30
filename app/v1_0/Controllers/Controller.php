@@ -3,7 +3,8 @@
 namespace App\v1_0\Controllers;
 
 //use Nen\Database\Connection;
-use Nen\Database\ConnectionInterface;
+//use Nen\Database\ConnectionInterface;
+use Common\Logger;
 use Nen\Formatter\FormatterInterface;
 use Nen\Http\RequestInterface;
 use Nen\Http\ResponseInterface;
@@ -14,10 +15,15 @@ use Nen\Web\Controller as NenController;
  */
 abstract class Controller extends NenController
 {
+//    /**
+//     * @var ConnectionInterface
+//     */
+//    protected $connection;
+
     /**
-     * @var ConnectionInterface
+     * @var Logger
      */
-    protected $connection;
+    protected $logger;
 
     /**
      * Controller constructor.
@@ -35,6 +41,9 @@ abstract class Controller extends NenController
         $this->response->setHeader(
             'Content-Type', 'application/json; charset=utf-8'
         );
+
+        $logDirectory = __DIR__ . '/../../log/';
+        $this->logger = new Logger($logDirectory);
 
 //        $this->connection = new Connection(
 //            getenv('DB_HOST'),
