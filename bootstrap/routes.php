@@ -17,8 +17,8 @@ return new Routes([
             new Route(GameController::class, 'event', null, Request::METHOD_PUT),
         ])),
         new Group('log', new Routes([
-            new Route(LogController::class, 'load', '(get|post|put|response|exception)', Request::METHOD_GET),
-            new Route(LogController::class, 'clear', '(get|post|put|response|exception)', Request::METHOD_DELETE),
+            new Route(LogController::class, 'load', '(get|post|put|response|exception|debug)', Request::METHOD_GET),
+            new Route(LogController::class, 'clear', '(get|post|put|response|exception|debug)', Request::METHOD_DELETE),
         ])),
     ])),
 ]);

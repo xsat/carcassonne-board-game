@@ -71,6 +71,12 @@ class ReplyBot implements BotInterface
                     $exception->getMessage() . PHP_EOL
                 );
             }
+        } else {
+            $this->logger->add(
+                'debug.txt',
+                date('Y-m-d H:i:s') . PHP_EOL .
+                json_encode($data) . PHP_EOL
+            );
         }
     }
 }
