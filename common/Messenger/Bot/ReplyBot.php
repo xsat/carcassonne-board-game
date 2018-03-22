@@ -59,14 +59,13 @@ class ReplyBot implements BotInterface
                         'Re: ' . $data['message']['text']
                     )
                 );
-                $this->logger->add(
-                    'debug.txt',
-                    var_dump(new TextMessage(
-                        $data['sender']['id'],
-                        'Re: ' . $data['message']['text']
-                    )) . PHP_EOL .
-                    $response->getBody()->getContents() . PHP_EOL
-                );
+                ob_start();
+                echo '3#', date('Y-m-d H:i:s'), PHP_EOL;
+                var_dump( new TextMessage(
+                    $data['sender']['id'],
+                    'Re: ' . $data['message']['text']
+                ));
+                $this->logger->add('debug.txt', ob_get_clean());
                 $this->logger->add(
                     'response.txt',
                     date('Y-m-d H:i:s') . PHP_EOL .
