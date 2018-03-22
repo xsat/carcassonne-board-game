@@ -30,7 +30,14 @@ class GameController extends Controller
             $this->response->setContent($this->request->get('hub_challenge'));
         } else {
             $data = json_decode(file_get_contents('php://input'), true);
-            (new ReplyBot($this->api, getenv('PAGE_ID')))->handle($data ?: []);
+            $bot = new ReplyBot($this->api, getenv('PAGE_ID'));
+
+            if (isset($data['entry']) && is_array($data['entry'])) {
+                foreach ($data['entry'] as $entry) {
+                    $bot->handle(is_array($entry) ? $entry : []);
+                }
+            }
+
             $this->response();
         }
     }
