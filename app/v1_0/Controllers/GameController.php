@@ -34,7 +34,7 @@ class GameController extends Controller
 
             if (isset($data['entry']) && is_array($data['entry'])) {
                 foreach ($data['entry'] as $entry) {
-                    if (isset($entry['messaging']) && is_array($data['messaging'])) {
+                    if (isset($entry['messaging']) && is_array($entry['messaging'])) {
                         foreach ($entry['messaging'] as $message) {
                             $bot->handle(is_array($message) ? $message : []);
                         }
