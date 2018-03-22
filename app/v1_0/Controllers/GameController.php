@@ -34,11 +34,20 @@ class GameController extends Controller
 
             if (isset($data['entry']) && is_array($data['entry'])) {
                 foreach ($data['entry'] as $entry) {
-                    $bot->handle(is_array($entry) ? $entry : []);
+                    if (isset($entry['messaging']) && is_array($data['messaging'])) {
+                        foreach ($entry['messaging'] as $message) {
+                            $bot->handle(is_array($message) ? $message : []);
+                        }
+                    } else {
+                        ob_start();
+                        echo '1#', date('Y-m-d H:i:s'), PHP_EOL;
+                        var_dump($data);
+                        $this->logger->add('debug.txt', ob_get_clean());
+                    }
                 }
             } else {
                 ob_start();
-                echo date('Y-m-d H:i:s'), PHP_EOL;
+                echo '2#', date('Y-m-d H:i:s'), PHP_EOL;
                 var_dump($data);
                 $this->logger->add('debug.txt', ob_get_clean());
             }
