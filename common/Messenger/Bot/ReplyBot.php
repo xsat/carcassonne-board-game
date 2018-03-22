@@ -49,14 +49,14 @@ class ReplyBot implements BotInterface
         if (
             isset($data['sender']['id']) &&
             isset($data['recipient']['id']) &&
-            isset($data['message']['test']) &&
+            isset($data['message']['text']) &&
             $data['recipient']['id'] === $this->page_id
         ) {
             try {
                 $response = $this->api->send(
                     new TextMessage(
                         $data['sender']['id'],
-                        'Re: ' . $data['message']['test']
+                        'Re: ' . $data['message']['text']
                     )
                 );
                 $this->logger->add(
