@@ -79,6 +79,12 @@ class ReplyBot implements BotInterface
                 );
             }
         } else {
+            ob_start();
+            echo '4#', date('Y-m-d H:i:s'), PHP_EOL;
+            var_dump( new TextMessage(
+                $data['sender']['id'],
+                'Re: ' . $data['message']['text']
+            ));
             $this->logger->add(
                 'debug.txt',
                 date('Y-m-d H:i:s') . PHP_EOL .
