@@ -3,9 +3,8 @@
 namespace Common\Messenger;
 
 use Common\Messenger\Message\MessageInterface;
-use Common\Messenger\Recipient\RecipientInterface;
 use GuzzleHttp\Client;
-use GuzzleHttp\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Api
@@ -33,19 +32,12 @@ class Api implements ApiInterface
     }
 
     /**
-     * @param RecipientInterface $recipient
      * @param MessageInterface $message
      *
      * @return ResponseInterface
      */
-    public function send(
-        RecipientInterface $recipient,
-        MessageInterface $message
-    ): ResponseInterface
+    public function send(MessageInterface $message): ResponseInterface
     {
-        return $this->client->post('me/messages', [
-//            'recipient' => $recipient->getRecipient(),
-//            'message' => $message->getMessage(),
-        ]);
+        return $this->client->post('me/messages', $message->getData());
     }
 }

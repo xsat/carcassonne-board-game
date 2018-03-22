@@ -5,6 +5,8 @@ namespace App\v1_0\Controllers;
 //use Nen\Database\Connection;
 //use Nen\Database\ConnectionInterface;
 use Common\Logger;
+use Common\Messenger\Api;
+use Common\Messenger\ApiInterface;
 use Nen\Formatter\FormatterInterface;
 use Nen\Http\RequestInterface;
 use Nen\Http\ResponseInterface;
@@ -26,6 +28,11 @@ abstract class Controller extends NenController
     protected $logger;
 
     /**
+     * @var ApiInterface
+     */
+    protected $api;
+
+    /**
      * Controller constructor.
      *
      * @param RequestInterface $request
@@ -44,6 +51,7 @@ abstract class Controller extends NenController
 
         $logDirectory = __DIR__ . '/../../../log/';
         $this->logger = new Logger($logDirectory);
+        $this->api = new Api(getenv('ACCESS_TOKEN'));
 
 //        $this->connection = new Connection(
 //            getenv('DB_HOST'),

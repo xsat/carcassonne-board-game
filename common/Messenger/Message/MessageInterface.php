@@ -7,5 +7,8 @@ namespace Common\Messenger\Message;
  */
 interface MessageInterface
 {
-
+    /**
+     * @return array
+     */
+    public function getData(): array;
 }

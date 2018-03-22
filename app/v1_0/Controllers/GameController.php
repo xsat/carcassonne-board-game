@@ -2,6 +2,8 @@
 
 namespace App\v1_0\Controllers;
 
+use Common\Messenger\Bot\ReplyBot;
+
 /**
  * Class GameController
  */
@@ -27,6 +29,8 @@ class GameController extends Controller
         ) {
             $this->response->setContent($this->request->get('hub_challenge'));
         } else {
+            $data = json_decode(file_get_contents('php://input'), true);
+            (new ReplyBot($this->api, getenv('PAGE_ID')))->handle($data ?: []);
             $this->response();
         }
     }
