@@ -8,9 +8,9 @@ use Common\Messenger\Message\TextMessage;
 use Exception;
 
 /**
- * Class ReplyBot
+ * Class GameBot
  */
-class ReplyBot implements BotInterface
+class GameBot implements BotInterface
 {
     /**
      * @var LoggerInterface
@@ -28,7 +28,7 @@ class ReplyBot implements BotInterface
     private $page_id;
 
     /**
-     * ReplyBot constructor.
+     * GameBot constructor.
      *
      * @param LoggerInterface $logger
      * @param ApiInterface $api
@@ -53,7 +53,6 @@ class ReplyBot implements BotInterface
         if (
             isset($data['sender']['id']) &&
             isset($data['recipient']['id']) &&
-            isset($data['message']['text']) &&
             $data['recipient']['id'] === $this->page_id
         ) {
             try {

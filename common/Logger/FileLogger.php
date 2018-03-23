@@ -1,11 +1,11 @@
 <?php
 
-namespace Common;
+namespace Common\Logger;
 
 /**
- * Class Logger
+ * Class FileLogger
  */
-class Logger
+class FileLogger implements LoggerInterface
 {
     /**
      * @var string

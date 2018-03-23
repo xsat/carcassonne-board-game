@@ -2,28 +2,30 @@
 
 namespace App\v1_0\Controllers;
 
-//use Nen\Database\Connection;
-//use Nen\Database\ConnectionInterface;
-use Common\Logger;
+use Common\Logger\FileLogger;
+use Common\Logger\LoggerInterface;
 use Common\Messenger\Api;
 use Common\Messenger\ApiInterface;
+use Nen\Database\ConnectionInterface;
+use Nen\Database\PDOConnection;
 use Nen\Formatter\FormatterInterface;
 use Nen\Http\RequestInterface;
 use Nen\Http\ResponseInterface;
 use Nen\Web\Controller as NenController;
+use PDO;
 
 /**
  * Class Controller
  */
 abstract class Controller extends NenController
 {
-//    /**
-//     * @var ConnectionInterface
-//     */
-//    protected $connection;
+    /**
+     * @var ConnectionInterface
+     */
+    protected $connection;
 
     /**
-     * @var Logger
+     * @var LoggerInterface
      */
     protected $logger;
 
@@ -50,16 +52,17 @@ abstract class Controller extends NenController
         );
 
         $logDirectory = __DIR__ . '/../../../log/';
-        $this->logger = new Logger($logDirectory);
+        $this->logger = new FileLogger($logDirectory);
         $this->api = new Api(getenv('ACCESS_TOKEN'));
-
-//        $this->connection = new Connection(
-//            getenv('DB_HOST'),
-//            getenv('DB_DATABASE'),
-//            getenv('DB_USERNAME'),
-//            getenv('DB_PASSWORD'),
-//            getenv('DB_ENGINE')
-//        );
+        $this->connection = new PDOConnection(
+            new PDO(getenv('DATABASE_URL'), [
+                PDO::ATTR_CASE => PDO::CASE_NATURAL,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_ORACLE_NULLS => PDO::NULL_NATURAL,
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ])
+        );
     }
 
     /**
