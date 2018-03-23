@@ -3,8 +3,8 @@
 namespace Common\Game;
 
 /**
- * Class Component
+ * Class Player
  */
-class Component
+class Player
 {
 }
