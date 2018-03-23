@@ -20,11 +20,6 @@ use PDO;
 abstract class Controller extends NenController
 {
     /**
-     * @var ConnectionInterface
-     */
-    protected $connection;
-
-    /**
      * @var LoggerInterface
      */
     protected $logger;
@@ -33,6 +28,11 @@ abstract class Controller extends NenController
      * @var ApiInterface
      */
     protected $api;
+
+    /**
+     * @var ConnectionInterface
+     */
+    protected $connection;
 
     /**
      * Controller constructor.
