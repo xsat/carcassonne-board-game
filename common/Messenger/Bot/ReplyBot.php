@@ -59,12 +59,6 @@ class ReplyBot implements BotInterface
                         'Re: ' . $data['message']['text']
                     )
                 );
-                ob_start();
-                echo '3#', date('Y-m-d H:i:s'), PHP_EOL;
-                var_dump( new TextMessage(
-                    $data['sender']['id'],
-                    'Re: ' . $data['message']['text']
-                ));
                 $this->logger->add('debug.txt', ob_get_clean());
                 $this->logger->add(
                     'response.txt',
@@ -72,25 +66,12 @@ class ReplyBot implements BotInterface
                     $response->getBody()->getContents() . PHP_EOL
                 );
             } catch (Exception $exception) {
-                ob_start();
-                echo '4#', date('Y-m-d H:i:s'), PHP_EOL;
-                var_dump( new TextMessage(
-                    $data['sender']['id'],
-                    'Re: ' . $data['message']['text']
-                ));
-                $this->logger->add('debug.txt', ob_get_clean());
                 $this->logger->add(
                     'exception.txt',
                     date('Y-m-d H:i:s') . PHP_EOL .
                     $exception->getMessage() . PHP_EOL
                 );
             }
-        } else {
-            $this->logger->add(
-                'debug.txt',
-                date('Y-m-d H:i:s') . PHP_EOL .
-                json_encode($data) . PHP_EOL
-            );
         }
     }
 }
