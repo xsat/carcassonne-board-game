@@ -55,13 +55,18 @@ abstract class Controller extends NenController
         $this->logger = new FileLogger($logDirectory);
         $this->api = new Api(getenv('ACCESS_TOKEN'));
         $this->connection = new PDOConnection(
-            new PDO(getenv('DATABASE_URL'), null, null, [
-                PDO::ATTR_CASE => PDO::CASE_NATURAL,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_ORACLE_NULLS => PDO::NULL_NATURAL,
-                PDO::ATTR_STRINGIFY_FETCHES => false,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ])
+            new PDO(
+                getenv('DATABASE_DSN'),
+                getenv('DATABASE_USERNAME'),
+                getenv('DATABASE_PASSWORD'),
+                [
+                    PDO::ATTR_CASE => PDO::CASE_NATURAL,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_ORACLE_NULLS => PDO::NULL_NATURAL,
+                    PDO::ATTR_STRINGIFY_FETCHES => false,
+                    PDO::ATTR_EMULATE_PREPARES => false,
+                ]
+            )
         );
     }
 
