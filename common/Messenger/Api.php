@@ -24,7 +24,7 @@ class Api implements ApiInterface
     public function __construct(string $accessToken)
     {
         $this->client = new Client([
-            'base_uri' => 'https://graph.facebook.com/v2.6/',
+            'base_uri' => 'https://graph.facebook.com/v2.6',
             'query' => [
                 'access_token' => $accessToken,
             ],
@@ -38,6 +38,8 @@ class Api implements ApiInterface
      */
     public function send(MessageInterface $message): ResponseInterface
     {
-        return $this->client->post('me/messages', $message->getData());
+        return $this->client->post('me/messages', [
+            'json' => $message->getData(),
+        ]);
     }
 }
