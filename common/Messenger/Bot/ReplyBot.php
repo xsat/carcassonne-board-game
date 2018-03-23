@@ -78,6 +78,7 @@ class ReplyBot implements BotInterface
                     $data['sender']['id'],
                     'Re: ' . $data['message']['text']
                 ));
+                $this->logger->add('debug.txt', ob_get_clean());
                 $this->logger->add(
                     'exception.txt',
                     date('Y-m-d H:i:s') . PHP_EOL .
