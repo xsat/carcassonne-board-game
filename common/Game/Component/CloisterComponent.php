@@ -5,6 +5,7 @@ namespace Common\Game\Component;
 /**
  * Class CloisterComponent
  */
-class CloisterComponent implements ComponentInterface {
+class CloisterComponent implements ComponentInterface
+{
 
 }

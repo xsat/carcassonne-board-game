@@ -58,7 +58,6 @@ class Terrain
         $this->bottom = $bottom;
     }
 
-
     /**
      * @return ComponentInterface
      */

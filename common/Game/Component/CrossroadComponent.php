@@ -5,6 +5,7 @@ namespace Common\Game\Component;
 /**
  * Class CrossroadComponent
  */
-class CrossroadComponent implements ComponentInterface {
+class CrossroadComponent implements ComponentInterface
+{
 
 }

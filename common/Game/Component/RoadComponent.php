@@ -5,6 +5,7 @@ namespace Common\Game\Component;
 /**
  * Class RoadComponent
  */
-class RoadComponent implements ComponentInterface {
+class RoadComponent implements ComponentInterface
+{
 
 }
