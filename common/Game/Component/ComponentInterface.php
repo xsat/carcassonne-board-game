@@ -7,5 +7,10 @@ namespace Common\Game\Component;
  */
 interface ComponentInterface
 {
-
+    /**
+     * @param ComponentInterface $component
+     *
+     * @return bool
+     */
+    public function connect(ComponentInterface $component): bool;
 }

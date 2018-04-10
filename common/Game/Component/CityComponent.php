@@ -5,7 +5,7 @@ namespace Common\Game\Component;
 /**
  * Class CityComponent
  */
-class CityComponent implements ComponentInterface
+class CityComponent extends Component
 {
 
 }
