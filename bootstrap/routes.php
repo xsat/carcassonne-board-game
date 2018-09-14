@@ -1,8 +1,8 @@
 <?php
 
-use App\v1_0\Controllers\GameController;
-use App\v1_0\Controllers\IndexController;
-use App\v1_0\Controllers\LogController;
+use Api\v1_0\Controllers\GameController;
+use Api\v1_0\Controllers\IndexController;
+use Api\v1_0\Controllers\LogController;
 use Nen\Http\Request;
 use Nen\Router\Group;
 use Nen\Router\Route;

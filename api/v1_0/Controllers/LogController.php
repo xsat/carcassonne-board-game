@@ -1,6 +1,6 @@
 <?php
 
-namespace App\v1_0\Controllers;
+namespace Api\v1_0\Controllers;
 
 /**
  * Class LogController
